@@ -1,321 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GizmoGlow — Mutize Miriam | Web Developer</title>
-  <meta name="description" content="GizmoGlow — Bright Ideas, Beautiful Websites. Portfolio of Mutize Miriam: web development with HTML, CSS, JavaScript; logo, poster & flyer design." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --beige:#E9DCCB;     /* light beige */
-      --beige-2:#D8C7AE;   /* mid beige */
-      --charcoal:#1F2937;  /* dark grey */
-      --mid:#6B7280;       /* mid grey */
-      --ink:#111827;       /* deeper grey */
-      --white:#FFFFFF;
-      --shadow:0 10px 25px rgba(0,0,0,.10);
-      --radius:18px;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f5f0;
+      color: #333;
+      line-height: 1.6;
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0; 
-      font-family:"Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--ink);
-      background:linear-gradient(180deg,var(--beige) 0%, #F5EFE3 100%);
+
+    /* HEADER */
+    header {
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    a{color:inherit; text-decoration:none}
-    .container{width:min(1100px, 92%); margin-inline:auto}
-    /* Header */
-    header{
-      position:sticky; top:0; z-index:50;
-      background:rgba(233,220,203,.85);
-      backdrop-filter:saturate(140%) blur(10px);
-      border-bottom:1px solid rgba(0,0,0,.06);
+    header h1 {
+      margin: 0;
+      font-size: 20px;
     }
-    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
-    .brand{display:flex; align-items:center; gap:12px}
-    .logo{width:40px; height:40px; border-radius:50%; background:radial-gradient(circle at 30% 30%, var(--white), var(--beige-2)); box-shadow:inset 0 2px 8px rgba(0,0,0,.15)}
-    /* Simple SVG mark */
-    .logo svg{width:100%; height:100%}
-    .brand h1{font-size:1.1rem; margin:0; letter-spacing:.5px}
-    .tag-mini{font-size:.72rem; color:var(--mid)}
-    .nav a{padding:8px 12px; border-radius:10px}
-    .nav a:hover{background:rgba(31,41,55,.06)}
-    .cta-btn{background:var(--charcoal); color:var(--white); padding:10px 16px!important; border-radius:12px; box-shadow:var(--shadow)}
-    .cta-btn:hover{transform:translateY(-1px)}
-    .menu{display:flex; align-items:center; gap:8px}
-    .hamburger{display:none}
 
-    /* Hero */
-    .hero{isolation:isolate; position:relative; padding:84px 0 70px}
-    .hero .grid{display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center}
-    .hero-card{background:var(--white); border:1px solid rgba(0,0,0,.06); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow)}
-    .badge{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:#f7f3ec; color:#6b5b45; font-weight:600; font-size:.85rem; border:1px solid #eadfcf}
-    .hero h2{font-size:2.6rem; line-height:1.1; margin:16px 0 10px}
-    .hero p{color:var(--mid); font-size:1.05rem}
-    .actions{display:flex; gap:12px; margin-top:18px}
-    .btn{display:inline-block; padding:12px 18px; border-radius:14px; font-weight:600; border:1px solid rgba(31,41,55,.12); background:var(--white)}
-    .btn.primary{background:var(--charcoal); color:var(--white); border-color:var(--charcoal)}
-    .card-visual{height:320px; border-radius:var(--radius); background:linear-gradient(135deg, var(--beige-2), #f1e7d5); border:1px solid rgba(0,0,0,.06); box-shadow:var(--shadow); position:relative; overflow:hidden}
-    /* "Cover image" made from CSS shapes so you have a hero photo without a file */
-    .glow{position:absolute; inset:-40%; background:radial-gradient(closest-side, rgba(31,41,55,.15), transparent 60%); filter:blur(30px)}
-    .phone{position:absolute; right:28px; bottom:-14px; width:210px; height:420px; border-radius:26px; background:linear-gradient(180deg,#2b2f36,#111827); border:10px solid #2f3744; box-shadow:0 30px 60px rgba(0,0,0,.25)}
-    .phone::before{content:""; position:absolute; inset:14px; border-radius:18px; background:linear-gradient(180deg,#111827,#0b0e13)}
-    .dots{position:absolute; left:24px; top:24px; display:flex; gap:6px}
-    .dot{width:8px; height:8px; border-radius:50%; background:#9ca3af}
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+    }
+    nav a:hover { color: #0077cc; }
 
-    /* Sections */
-    section{padding:70px 0}
-    .section-title{font-size:1.9rem; margin:0 0 16px}
-    .section-sub{color:var(--mid); margin:0 0 30px}
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: #fff;
+      border-top: 1px solid #ddd;
+      padding: 10px 20px;
+    }
+    .mobile-nav a {
+      padding: 10px 0;
+      font-size: 16px;
+    }
 
-    /* About */
-    .about{display:grid; grid-template-columns:1fr; gap:18px}
-    .about .card{background:var(--white); border:1px solid rgba(0,0,0,.06); padding:24px; border-radius:var(--radius); box-shadow:var(--shadow)}
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: #e9dccb;
+    }
+    .hero h2 { margin: 10px 0; font-size: 28px; }
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background: #333;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .btn:hover { background: #555; }
 
-    /* Services */
-    .services-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:16px}
-    .service{background:var(--white); border:1px solid rgba(0,0,0,.06); padding:20px; border-radius:16px; box-shadow:var(--shadow); transition:transform .2s}
-    .service:hover{transform:translateY(-3px)}
-    .service h3{margin:6px 0 8px; font-size:1.1rem}
-    .chip{display:inline-block; font-size:.8rem; background:#f6efe4; border:1px solid #eadfcf; padding:6px 10px; border-radius:999px; margin:6px 6px 0 0}
+    section {
+      padding: 50px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-    /* Portfolio */
-    .portfolio-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:18px}
-    .work{background:var(--white); border:1px solid rgba(0,0,0,.06); border-radius:16px; overflow:hidden; box-shadow:var(--shadow)}
-    .work img{width:100%; height:180px; object-fit:cover; background:#d6c7ae}
-    .work .body{padding:16px}
-    .work h4{margin:0 0 6px}
-    .work p{margin:0; color:var(--mid); font-size:.95rem}
+    /* CARDS & GRIDS */
+    .services, .portfolio, .contact {
+      display: grid;
+      gap: 20px;
+    }
+    .services {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .portfolio {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .contact {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .portfolio img {
+      width: 100%;
+      border-radius: 8px;
+      height: auto;
+    }
 
-    /* Contact */
-    .contact-card{background:var(--white); border:1px solid rgba(0,0,0,.06); border-radius:var(--radius); box-shadow:var(--shadow); padding:24px}
-    .contact-list{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:10px}
-    .contact-item{background:#f9f5ee; border:1px solid #eadfcf; border-radius:14px; padding:14px}
-    .contact-item a{font-weight:600}
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #222;
+      color: #eee;
+      font-size: 14px;
+    }
 
-    /* Footer */
-    footer{padding:30px 0 50px; color:var(--mid); text-align:center}
-
-    /* Responsive */
-    @media (max-width: 950px){
-      .hero .grid{grid-template-columns:1fr}
-      .services-grid{grid-template-columns:1fr 1fr}
-      .portfolio-grid{grid-template-columns:1fr 1fr}
-      .contact-list{grid-template-columns:1fr}
-      .hamburger{display:inline-flex; cursor:pointer; padding:8px 10px; border-radius:10px; border:1px solid rgba(31,41,55,.1)}
-      .menu{display:none}
-      .menu.open{display:flex; position:absolute; left:0; right:0; top:60px; background:rgba(233,220,203,.98); padding:10px; border-bottom:1px solid rgba(0,0,0,.06)}
-      .menu a{width:100%; padding:12px}
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+      .hero h2 {
+        font-size: 22px;
+      }
+      .btn {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+      section {
+        padding: 30px 15px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="container nav">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">
-          <!-- Minimal SVG monogram -->
-          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="46" stroke="#6B7280" stroke-width="3"/>
-            <path d="M22 58c12-12 44-12 56 0" stroke="#6B7280" stroke-width="4" stroke-linecap="round"/>
-            <path d="M34 44h32v10H34z" fill="#6B7280" opacity=".18"/>
-            <path d="M30 37c7-7 33-7 40 0" stroke="#6B7280" stroke-width="3" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div>
-          <h1>GizmoGlow</h1>
-          <div class="tag-mini">Bright Ideas, Beautiful Websites</div>
-        </div>
-      </div>
-      <nav>
-        <div class="hamburger" id="hamburger" aria-label="Open Menu">☰</div>
-        <div class="menu" id="menu">
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#work">Projects</a>
-          <a href="#contact" class="cta-btn">Contact</a>
-        </div>
-      </nav>
-    </div>
+    <h1>GizmoGlow</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburger">☰</button>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container grid">
-        <div class="hero-card">
-          <span class="badge">Hi, I’m Mutize Miriam</span>
-          <h2>Web Development & Creative Design</h2>
-          <p>
-            I build modern, responsive websites with <strong>HTML, CSS & JavaScript</strong>. I also design distinctive logos, posters and flyers — complete, elegant solutions that make your brand shine.
-          </p>
-          <div class="actions">
-            <a class="btn primary" href="#work">View My Projects</a>
-            <a class="btn" href="#contact">Hire Me</a>
-          </div>
-        </div>
-        <div class="card-visual" aria-hidden="true">
-          <div class="glow"></div>
-          <div class="phone">
-            <div class="dots">
-              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-            </div>
-          </div>
-        </div>
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#work">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <section class="hero">
+    <h2>Hi, I’m Mutize Miriam</h2>
+    <p>I build modern websites and creative designs using <b>HTML, CSS & JavaScript</b>.</p>
+    <a href="#work" class="btn">View Projects</a>
+    <a href="#contact" class="btn">Hire Me</a>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;">
+      I craft clean, responsive websites and design logos, posters, and flyers. 
+      My goal is to make your brand shine online.
+    </p>
+  </section>
+
+  <section id="services">
+    <h2>Services</h2>
+    <div class="services">
+      <div class="card"><h3>Website Design</h3><p>Responsive, fast, SEO-ready websites.</p></div>
+      <div class="card"><h3>Logo Design</h3><p>Memorable and versatile brand marks.</p></div>
+      <div class="card"><h3>Posters & Flyers</h3><p>Eye-catching graphics for events and campaigns.</p></div>
+    </div>
+  </section>
+
+  <section id="work">
+    <h2>Projects</h2>
+    <div class="portfolio">
+      <div class="card">
+        <img src="img/galaxy-flyer.jpg" alt="Galaxy Car Trimmers Flyer">
+        <h3>Flyer Design</h3>
+        <p>Promotional flyer for Galaxy Car Trimmers.</p>
       </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="container about">
-        <h3 class="section-title">About Me</h3>
-        <p class="section-sub">A freelancer focused on clean design and real results.</p>
-        <div class="card">
-          <p>
-            I’m <strong>Mutize Miriam</strong>, founder of <strong>GizmoGlow</strong>. I craft user‑friendly websites that look beautiful and work flawlessly across devices. My core stack is <strong>HTML, CSS, and JavaScript</strong>, and I complement web builds with brand assets such as <strong>logos</strong>, <strong>posters</strong>, and <strong>flyers</strong> so your presence is consistent everywhere.
-          </p>
-          <p style="margin:0">
-            My approach is simple: understand the goal, design with clarity, and deliver fast, responsive experiences.
-          </p>
-        </div>
+      <div class="card">
+        <img src="img/galaxy-card.jpg" alt="Galaxy Car Trimmers Business Card">
+        <h3>Business Card</h3>
+        <p>Minimalist card with clear contact details.</p>
       </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services">
-      <div class="container">
-        <h3 class="section-title">Services</h3>
-        <p class="section-sub">Everything you need to launch or refresh your brand online.</p>
-        <div class="services-grid">
-          <div class="service">
-            <h3>Website Design & Build</h3>
-            <p>Create modern, responsive sites tailored to your brand using HTML, CSS & JavaScript.</p>
-            <span class="chip">Responsive</span><span class="chip">SEO‑ready</span><span class="chip">Fast</span>
-          </div>
-          <div class="service">
-            <h3>Logo Design</h3>
-            <p>Memorable brand marks with versatile files for web, print, and social.</p>
-            <span class="chip">Vector</span><span class="chip">Brand kit</span>
-          </div>
-          <div class="service">
-            <h3>Poster & Flyer Design</h3>
-            <p>Eye‑catching graphics for promotions, events, and campaigns.</p>
-            <span class="chip">Print‑ready</span><span class="chip">Social sizes</span>
-          </div>
-          <div class="service">
-            <h3>Maintenance & Updates</h3>
-            <p>Content edits, speed improvements, and ongoing support.</p>
-            <span class="chip">Monthly plans</span>
-          </div>
-          <div class="service">
-            <h3>Consulting</h3>
-            <p>Advice on structure, content, and user experience to boost conversions.</p>
-            <span class="chip">UX</span><span class="chip">Copy assist</span>
-          </div>
-          <div class="service">
-            <h3>And More</h3>
-            <p>Custom requests welcome — tell me what you need and I’ll make it happen.</p>
-            <span class="chip">Tailored</span>
-          </div>
-        </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/400x200" alt="Website mockup">
+        <h3>Website Build</h3>
+        <p>Mobile-first layout with JavaScript features.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- PORTFOLIO -->
-    <section id="work">
-      <div class="container">
-        <h3 class="section-title">My Projects</h3>
-        <p class="section-sub">A selection of recent work. (Replace the placeholder images with your own.)</p>
-        <div class="portfolio-grid">
-          <!-- Project 1: Galaxy Car Trimmers Flyer -->
-          <article class="work">
-            <!-- Replace src with your uploaded flyer image path -->
-            <img src="img/galaxy-flyer.jpg" alt="Galaxy Car Trimmers — flyer design (beige & grey)" />
-            <div class="body">
-              <h4>Galaxy Car Trimmers — Flyer</h4>
-              <p>Created a sleek promotional flyer highlighting car interior services in a beige & grey luxury theme.</p>
-            </div>
-          </article>
-
-          <!-- Project 2: Galaxy Car Trimmers Business Card -->
-          <article class="work">
-            <img src="img/galaxy-card.jpg" alt="Galaxy Car Trimmers — business card design" />
-            <div class="body">
-              <h4>Galaxy Car Trimmers — Business Card</h4>
-              <p>Designed a minimalist business card with strong hierarchy and clear contact details.</p>
-            </div>
-          </article>
-
-          <!-- Project 3: Website Mock (placeholder) -->
-          <article class="work">
-            <!-- Use a screenshot of a website you built -->
-            <img src="https://images.unsplash.com/photo-1526498460520-4c246339dccb?q=80&w=1200&auto=format&fit=crop" alt="Website design mockup" />
-            <div class="body">
-              <h4>Responsive Website Build</h4>
-              <p>Custom, mobile‑first layout with smooth interactions using vanilla JavaScript.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="container">
-        <h3 class="section-title">Let’s Work Together</h3>
-        <p class="section-sub">Tell me about your project and I’ll get back to you shortly.</p>
-        <div class="contact-card">
-          <div class="contact-list">
-            <div class="contact-item">
-              <div>Email</div>
-              <a href="mailto:miriammutize140@gmail.com">miriammutize140@gmail.com</a>
-            </div>
-            <div class="contact-item">
-              <div>Phone</div>
-              <a href="tel:+27691971359">+27 69 197 1359</a>
-            </div>
-            <div class="contact-item">
-              <div>WhatsApp</div>
-              <a href="https://wa.me/27691971359" target="_blank" rel="noopener">Chat on WhatsApp</a>
-            </div>
-          </div>
-          <div style="margin-top:18px">
-            <a class="btn primary" href="mailto:miriammutize140@gmail.com?subject=Project%20Inquiry%20—%20GizmoGlow&body=Hi%20Miriam,%20I%27d%20like%20help%20with...">Send an Email</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact">
+      <div class="card"><b>Email:</b><br><a href="mailto:miriammutize140@gmail.com">miriammutize140@gmail.com</a></div>
+      <div class="card"><b>Phone:</b><br><a href="tel:+27691971359">+27 69 197 1359</a></div>
+      <div class="card"><b>WhatsApp:</b><br><a href="https://wa.me/27691971359">Chat on WhatsApp</a></div>
+    </div>
+  </section>
 
   <footer>
-    <div class="container">
-      © <span id="year"></span> GizmoGlow — Mutize Miriam. All rights reserved.
-    </div>
+    © <span id="year"></span> GizmoGlow — Mutize Miriam
   </footer>
 
   <script>
     // Mobile menu toggle
-    const burger = document.getElementById('hamburger');
-    const menu = document.getElementById('menu');
-    burger?.addEventListener('click',()=>menu.classList.toggle('open'));
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
 
-  <!--
-  HOW TO USE / CUSTOMIZE
-  1) Replace the placeholder project images in the Portfolio section:
-     - Put your files in /img and update src values (img/galaxy-flyer.jpg, img/galaxy-card.jpg, etc.)
-     - Or replace with absolute links.
-  2) Update text anywhere to fit new projects. Duplicate a <article class="work"> block for more work.
-  3) Colors come from :root; to tweak beige/grey, change --beige, --beige-2, --charcoal, --mid above.
-  4) The circular logo is a simple inline SVG. Swap it with your own SVG or an <img>.
-  5) Host this as index.html on any static host (GitHub Pages, Netlify, Vercel, etc.).
-  -->
+    hamburger.addEventListener('click', () => {
+      mobileNav.style.display = mobileNav.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // Auto close menu on link click
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.style.display = 'none';
+      });
+    });
+
+    // Year update
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

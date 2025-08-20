@@ -15,40 +15,76 @@
 
     /* HEADER */
     header {
-      background: #fff;
-      border-bottom: 1px solid #ddd;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 20px;
-    }
+  background: linear-gradient(135deg, #0077cc, #005fa3);
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  color: #fff;
+}
 
-    nav {
-      display: flex;
-      gap: 15px;
-    }
-    nav a {
-      text-decoration: none;
-      color: #333;
-      font-size: 16px;
-    }
-    nav a:hover { color: #0077cc; }
+.logo h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
 
-    /* HAMBURGER */
-    .hamburger {
-      display: none;
-      font-size: 24px;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
+.logo p {
+  margin: 0;
+  font-size: 14px;
+  font-style: italic;
+  color: #e0e0e0;
+}
+
+nav {
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+nav a:hover {
+  color: #ffdd57;
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #fff;
+}
     .mobile-nav {
       display: none;
       flex-direction: column;
@@ -148,15 +184,26 @@
 </head>
 <body>
   <header>
+  <div class="logo">
     <h1>GizmoGlow</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#work">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <button class="hamburger" id="hamburger">☰</button>
-  </header>
+    <p>Web Development & Creative Design</p>
+  </div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#work">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="hamburger" id="hamburger">☰</button>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#work">Projects</a>
+  <a href="#contact">Contact</a>
+</div>
 
   <!-- Mobile Nav -->
   <div class="mobile-nav" id="mobileNav">
@@ -174,12 +221,17 @@
   </section>
 
   <section id="about">
-    <h2>About Me</h2>
-    <p style="text-align:center; max-width:700px; margin:auto;">
-      I craft clean, responsive websites and design logos, posters, and flyers. 
-      My goal is to make your brand shine online.
+  <h2>About Me</h2>
+  <div style="text-align:center; max-width:700px; margin:auto;">
+    <span>Hi, I’m Mutize Miriam</span>
+    <h2>Web Development & Creative Design</h2>
+    <p>
+      I build modern, responsive websites with <strong>HTML, CSS & JavaScript</strong>. 
+      I also design distinctive logos, posters and flyers — complete, elegant solutions 
+      that make your brand shine.
     </p>
-  </section>
+  </div>
+</section>
 
   <section id="services">
     <h2>Services</h2>

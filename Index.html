@@ -354,16 +354,16 @@ const mobileNav = document.getElementById("mobileNav");
 
 hamburger.addEventListener("click", () => {
   mobileNav.classList.toggle("active");
-
-  // Change hamburger to X when open
   hamburger.textContent = mobileNav.classList.contains("active") ? "✖" : "☰";
 });
 
-// Close mobile menu when link is clicked
+// Smooth scroll when clicking links
 document.querySelectorAll(".mobile-nav a").forEach(link => {
-  link.addEventListener("click", () => {
-    mobileNav.classList.remove("active");
-    hamburger.textContent = "☰";
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute("href"));
+    target.scrollIntoView({ behavior: "smooth" });
+    // Do NOT close menu automatically
   });
 });
 

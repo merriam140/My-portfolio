@@ -109,18 +109,53 @@
 
     }
     
+    /* Mobile nav - vertical list with brand colors */
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: linear-gradient(180deg, #E9DCCB, #D8C7AE); /* beige gradient */
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  left: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.4s ease;
+}
+/* Slide-down active state */
+.mobile-nav.active {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+}
+ .mobile-nav a {
+  text-decoration: none;
+  color: #1F2937; /* charcoal text */
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(31,41,55,0.1); /* subtle separator */
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+.mobile-nav a:last-child {
+  border-bottom: none;
+}
+
+.mobile-nav a:hover {
+  background: rgba(31,41,55,0.05);
+  color: #6B7280; /* mid grey hover */
+  padding-left: 8px;
+}
+
     
-    .mobile-nav {
-      display: none;
-      flex-direction: column;
-      background: #fff;
-      border-top: 1px solid #ddd;
-      padding: 10px 20px;
-    }
-    .mobile-nav a {
-      padding: 10px 0;
-      font-size: 16px;
-    }
 
     /* HERO */
     .hero {
@@ -314,19 +349,23 @@
 
   <script>
     // Mobile menu toggle
-    const hamburger = document.getElementById('hamburger');
-    const mobileNav = document.getElementById('mobileNav');
+    const hamburger = document.getElementById("hamburger");
+const mobileNav = document.getElementById("mobileNav");
 
-    hamburger.addEventListener('click', () => {
-      mobileNav.style.display = mobileNav.style.display === 'flex' ? 'none' : 'flex';
-    });
+hamburger.addEventListener("click", () => {
+  mobileNav.classList.toggle("active");
 
-    // Auto close menu on link click
-    document.querySelectorAll('.mobile-nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileNav.style.display = 'none';
-      });
-    });
+  // Change hamburger to X when open
+  hamburger.textContent = mobileNav.classList.contains("active") ? "✖" : "☰";
+});
+
+// Close mobile menu when link is clicked
+document.querySelectorAll(".mobile-nav a").forEach(link => {
+  link.addEventListener("click", () => {
+    mobileNav.classList.remove("active");
+    hamburger.textContent = "☰";
+  });
+});
 
     // Year update
     document.getElementById("year").textContent = new Date().getFullYear();

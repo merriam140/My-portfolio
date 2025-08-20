@@ -352,18 +352,24 @@
     const hamburger = document.getElementById("hamburger");
 const mobileNav = document.getElementById("mobileNav");
 
+// Toggle mobile menu when hamburger is clicked
 hamburger.addEventListener("click", () => {
   mobileNav.classList.toggle("active");
   hamburger.textContent = mobileNav.classList.contains("active") ? "✖" : "☰";
 });
 
-// Smooth scroll when clicking links
+// Smooth scroll & close menu when clicking a link
 document.querySelectorAll(".mobile-nav a").forEach(link => {
   link.addEventListener("click", (e) => {
-    e.preventDefault();
+    e.preventDefault(); // prevent default jump
     const target = document.querySelector(link.getAttribute("href"));
+
+    // Smooth scroll
     target.scrollIntoView({ behavior: "smooth" });
-    // Do NOT close menu automatically
+
+    // Close the mobile menu
+    mobileNav.classList.remove("active");
+    hamburger.textContent = "☰";
   });
 });
 

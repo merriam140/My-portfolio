@@ -4,7 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GizmoGlow — Mutize Miriam | Web Developer</title>
+ <meta name="description" content="GizmoGlow — Bright Ideas, Beautiful Websites. Portfolio of Mutize Miriam: web development with HTML, CSS, JavaScript; logo, poster & flyer design." />  
+  <link rel="preconnect" href="https://fonts.googleapis.com">  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">  
   <style>
+    :root{  
+      --beige:#E9DCCB;     /* light beige */  
+      --beige-2:#D8C7AE;   /* mid beige */  
+      --charcoal:#1F2937;  /* dark grey */  
+      --mid:#6B7280;       /* mid grey */  
+      --ink:#111827;       /* deeper grey */  
+      --white:#FFFFFF;  
+      --shadow:0 10px 25px rgba(0,0,0,.10);  
+      --radius:18px;  
+    }  
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -14,28 +28,27 @@
     }
 
     /* HEADER */
-    header {
-  background: linear-gradient(135deg, #d6ccc2, #b8a397); /* beige gradient */
-  color: #222;
-}
-nav a {
-  color: #222;
-}
-nav a::after {
-  background: #222;
-}
-nav a:hover {
-  color: #ff6600;
-}
-
-.hamburger {
-  display: none;
-  font-size: 28px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  color: #fff;
-}
+     header{  
+      position:sticky; top:0; z-index:50;  
+      background:rgba(233,220,203,.85);  
+      backdrop-filter:saturate(140%) blur(10px);  
+      border-bottom:1px solid rgba(0,0,0,.06);  
+    }  
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}  
+    .brand{display:flex; align-items:center; gap:12px}  
+    .logo{width:40px; height:40px; border-radius:50%; background:radial-gradient(circle at 30% 30%, var(--white), var(--beige-2)); box-shadow:inset 0 2px 8px rgba(0,0,0,.15)}  
+    /* Simple SVG mark */  
+    .logo svg{width:100%; height:100%}  
+    .brand h1{font-size:1.1rem; margin:0; letter-spacing:.5px}  
+    .tag-mini{font-size:.72rem; color:var(--mid)}  
+    .nav a{padding:8px 12px; border-radius:10px}  
+    .nav a:hover{background:rgba(31,41,55,.06)}  
+    .cta-btn{background:var(--charcoal); color:var(--white); padding:10px 16px!important; border-radius:12px; box-shadow:var(--shadow)}  
+    .cta-btn:hover{transform:translateY(-1px)}  
+    .menu{display:flex; align-items:center; gap:8px}  
+    .hamburger{display:none}
+    
+    
     .mobile-nav {
       display: none;
       flex-direction: column;
@@ -134,19 +147,34 @@ nav a:hover {
   </style>
 </head>
 <body>
-  <header>
-  <div class="logo">
-    <h1>GizmoGlow</h1>
-    <p>Web Development & Creative Design</p>
-  </div>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#work">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <button class="hamburger" id="hamburger">☰</button>
-</header>
+  <header>  
+    <div class="container nav">  
+      <div class="brand">  
+        <div class="logo" aria-hidden="true">  
+          <!-- Minimal SVG monogram -->  
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">  
+            <circle cx="50" cy="50" r="46" stroke="#6B7280" stroke-width="3"/>  
+            <path d="M22 58c12-12 44-12 56 0" stroke="#6B7280" stroke-width="4" stroke-linecap="round"/>  
+            <path d="M34 44h32v10H34z" fill="#6B7280" opacity=".18"/>  
+            <path d="M30 37c7-7 33-7 40 0" stroke="#6B7280" stroke-width="3" stroke-linecap="round"/>  
+          </svg>  
+        </div>  
+        <div>  
+          <h1>GizmoGlow</h1>  
+          <div class="tag-mini">Bright Ideas, Beautiful Websites</div>  
+        </div>  
+      </div>  
+      <nav>  
+        <div class="hamburger" id="hamburger" aria-label="Open Menu">☰</div>  
+        <div class="menu" id="menu">  
+          <a href="#about">About</a>  
+          <a href="#services">Services</a>  
+          <a href="#work">Projects</a>  
+          <a href="#contact" class="cta-btn">Contact</a>  
+        </div>  
+      </nav>  
+    </div>  
+  </header>  
 
 <!-- Mobile Nav -->
 <div class="mobile-nav" id="mobileNav">
@@ -166,25 +194,15 @@ nav a:hover {
 
   <section class="hero">
     <h2>Hi, I’m Mutize Miriam</h2>
-    <p>I build modern websites and creative designs using <b>HTML, CSS & JavaScript</b>.</p>
+    <p>I build modern websites and creative designs using <b>HTML, CSS & JavaScript</b>.
+       I also design distinctive logos, posters and flyers — complete, elegant solutions 
+      that make your brand shine.
+    </p>
     <a href="#work" class="btn">View Projects</a>
     <a href="#contact" class="btn">Hire Me</a>
   </section>
 
-  <section id="about">
-  <h2>About Me</h2>
-  <div style="text-align:center; max-width:700px; margin:auto;">
-    <span>Hi, I’m Mutize Miriam</span>
-    <h2>Web Development & Creative Design</h2>
-    <p>
-      I build modern, responsive websites with <strong>HTML, CSS & JavaScript</strong>. 
-      I also design distinctive logos, posters and flyers — complete, elegant solutions 
-      that make your brand shine.
-    </p>
-  </div>
-</section>
-
-  <section id="services">
+ <section id="services">
     <h2>Services</h2>
     <div class="services">
       <div class="card"><h3>Website Design</h3><p>Responsive, fast, SEO-ready websites.</p></div>

@@ -3,7 +3,7 @@
 This is my personal portfolio website hosted on GitHub Pages.
 
 ## Live Website
-[Visit Here](https://merriam140.github.io)
+ https://merriam140.github.io/My-portfolio/ (https://merriam140.github.io)
 
 ## Project Structure
 - `index.html` – Main page of the website

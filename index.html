@@ -474,6 +474,46 @@
   .lightbox.open{display:grid}
   .lightbox img{max-height:92vh;max-width:92vw;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
   @media (max-width:520px){.work-visual{height:260px}}
+
+  /* ---------- MOBILE LAYOUT FIXES ---------- */
+  @media (max-width: 520px){
+    .container{width:100%}
+    .nav{padding:10px 0; gap:10px}
+    .brand{gap:8px; min-width:0}
+    .logo-mark{width:36px;height:36px;flex:0 0 36px}
+    .logo-mark .disc{width:29px;height:29px}
+    .logo-mark svg{width:17px;height:17px}
+    .brand-text{min-width:0}
+    .brand-text h1,.brand-name{font-size:1.05rem !important}
+    .tag-mini{font-size:.58rem;line-height:1.35;letter-spacing:0}
+    .hamburger{flex:0 0 40px}
+    .mobile-nav{top:66px;right:10px;left:10px;padding:8px 18px}
+    .hero{padding:72px 16px 58px}
+    .hero h1,.hero h2{font-size:clamp(2rem, 9vw, 2.8rem);overflow-wrap:anywhere}
+    .hero h1 br{display:none}
+    .hero p.lede{font-size:.96rem;line-height:1.65}
+    .hero-ctas{gap:10px}
+    .btn{justify-content:center;padding:12px 17px;max-width:100%}
+    .chips{gap:7px}
+    .chips span{font-size:.68rem;padding:6px 10px}
+    section{padding:54px 16px}
+    .services,.portfolio,.steps{grid-template-columns:minmax(0,1fr);gap:18px}
+    .service-card{padding:26px 22px}
+    .work-visual{height:220px}
+    .stats{grid-template-columns:minmax(0,1fr);padding:0;gap:8px}
+    .stat{padding:18px 10px}
+    .section-sub{margin:-24px auto 32px}
+    .contact-banner{padding:32px 18px}
+    .contact-banner .btn{width:100%}
+    footer .container{width:100%}
+  }
+  @media (max-width: 360px){
+    .tag-mini{display:none}
+    .hero h1,.hero h2{font-size:2rem}
+    .hero-ctas .btn{width:100%}
+    .mobile-nav{right:8px;left:8px}
+  }
+
 </style>
 </head>
 <body>

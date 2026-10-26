@@ -424,8 +424,25 @@
   .to-top:hover{background:var(--amber-deep)}
 
   @media (max-width: 860px){
-    .desktop-nav{display:none}
+    /* On phones and tablets, keep all navigation links inside the menu icon. */
+    nav.desktop-nav{display:none !important}
     .hamburger{display:block}
+  }
+
+  /* Hide the mobile menu completely until the hamburger is tapped. */
+  .mobile-nav{
+    visibility:hidden;
+    pointer-events:none;
+    padding-top:0;
+    padding-bottom:0;
+    border-color:transparent;
+  }
+  .mobile-nav.active{
+    visibility:visible;
+    pointer-events:auto;
+    padding-top:10px;
+    padding-bottom:10px;
+    border-color:var(--line);
   }
   @media (max-width: 520px){
     .hero{padding:90px 16px 70px}

@@ -19,6 +19,20 @@
     .submit{width:100%;border:0;border-radius:11px;padding:14px;margin-top:22px;background:var(--ink);color:white;font:600 .95rem Poppins;cursor:pointer}.submit:disabled{opacity:.6;cursor:wait}
     .secondary{display:block;text-align:center;border:0;background:none;padding:12px 0 0;font:500 .84rem Poppins;text-decoration:underline;cursor:pointer}.status{margin-top:17px;padding:12px;border-radius:10px;line-height:1.5;font-size:.86rem;display:none;overflow-wrap:anywhere}.status.show{display:block}.status.error{background:#ffe9e5;color:#8b2114}.status.success{background:#e6f5e8;color:#205c2b}
     .back{display:block;text-align:center;margin-top:23px;color:var(--mid);font-size:.88rem}.note{font-size:.76rem;color:var(--mid);line-height:1.55;margin-top:20px}.account{display:none}.account.show{display:block}.form-area.hidden{display:none}
+  
+    /* Keep the authentication form comfortable on narrow phone screens. */
+    @media (max-width: 480px) {
+      body{display:block;min-height:100svh;padding:16px 12px}
+      .card{width:100%;margin:12px auto;padding:24px 18px;border-radius:18px}
+      h1{font-size:clamp(1.9rem,8vw,2.3rem)}
+      .intro{font-size:.9rem;margin-bottom:20px}
+      .tabs button{padding:12px 6px;font-size:.84rem}
+      input{font-size:16px;padding:13px 12px}
+      .submit{padding:14px 12px}
+      .note{font-size:.74rem}
+      .back{padding-bottom:8px}
+    }
+
   </style>
 </head>
 <body>

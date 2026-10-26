@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F4EDDF">
+  <title>Sign in or Register — GizmoGlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#F4EDDF;--soft:#FBF7EE;--ink:#1C1916;--mid:#7A6F60;--amber:#E8A33D;--line:rgba(28,25,22,.14)}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at top,rgba(232,163,61,.25),transparent 42%),var(--cream);font-family:Poppins,Arial,sans-serif;color:var(--ink);display:grid;place-items:center;padding:24px}
+    a{color:inherit}.card{width:min(100%,470px);background:var(--soft);border:1px solid var(--line);border-radius:24px;padding:clamp(24px,5vw,42px);box-shadow:0 22px 55px rgba(28,25,22,.12)}
+    .brand{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);font-weight:600}.brand span{color:#a96312}
+    h1{font:600 clamp(2rem,5vw,2.6rem)/1.1 Fraunces,Georgia,serif;margin:16px 0 10px}.intro{color:var(--mid);line-height:1.65;font-size:.94rem;margin:0 0 25px}
+    .tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:5px;background:#eee5d5;border-radius:12px;margin-bottom:22px}.tabs button{border:0;background:transparent;padding:11px;border-radius:9px;font:500 .9rem Poppins;cursor:pointer}.tabs button.active{background:#fff;box-shadow:0 2px 8px #00000010}
+    label{display:block;font-size:.84rem;font-weight:500;margin:15px 0 7px}input{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;font:inherit;outline-offset:2px}input:focus{outline:2px solid var(--amber)}
+    .submit{width:100%;border:0;border-radius:11px;padding:14px;margin-top:22px;background:var(--ink);color:white;font:600 .95rem Poppins;cursor:pointer}.submit:disabled{opacity:.6;cursor:wait}
+    .secondary{display:block;text-align:center;border:0;background:none;padding:12px 0 0;font:500 .84rem Poppins;text-decoration:underline;cursor:pointer}.status{margin-top:17px;padding:12px;border-radius:10px;line-height:1.5;font-size:.86rem;display:none;overflow-wrap:anywhere}.status.show{display:block}.status.error{background:#ffe9e5;color:#8b2114}.status.success{background:#e6f5e8;color:#205c2b}
+    .back{display:block;text-align:center;margin-top:23px;color:var(--mid);font-size:.88rem}.note{font-size:.76rem;color:var(--mid);line-height:1.55;margin-top:20px}.account{display:none}.account.show{display:block}.form-area.hidden{display:none}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="brand"><span>GizmoGlow</span> · Miriam Mutize</div>
+    <section id="authArea" class="form-area">
+      <h1 id="heading">Welcome back.</h1>
+      <p class="intro" id="intro">Sign in to your account. The portfolio itself remains public and can be viewed without signing in.</p>
+      <div class="tabs" role="tablist" aria-label="Account action">
+        <button type="button" id="loginTab" class="active" aria-selected="true">Sign in</button>
+        <button type="button" id="signupTab" aria-selected="false">Create account</button>
+      </div>
+      <form id="authForm">
+        <label for="email">Email address</label>
+        <input id="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" minlength="8" placeholder="At least 8 characters" required>
+        <button class="submit" id="submitButton" type="submit">Sign in</button>
+      </form>
+      <button type="button" class="secondary" id="forgotButton">Forgot your password?</button>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <p class="note">Your password is handled by Supabase Authentication; this website does not store or email your password. Never share your password with anyone.</p>
+    </section>
+    <section id="accountArea" class="account">
+      <h1>You're signed in.</h1>
+      <p class="intro" id="accountText">Your account is active.</p>
+      <button class="submit" id="logoutButton" type="button">Sign out</button>
+      <div id="accountStatus" class="status" role="status" aria-live="polite"></div>
+    </section>
+    <a class="back" href="./">← Back to the public portfolio</a>
+  </main>
+  <script type="module" src="auth.js"></script>
+</body>
+</html>

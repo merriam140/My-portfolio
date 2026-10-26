@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F4EDDF">
+  <title>Private Admin — GizmoGlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,300..900;1,300..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#F4EDDF;--soft:#FBF7EE;--ink:#1C1916;--mid:#7A6F60;--amber:#E8A33D;--line:rgba(28,25,22,.14);--red:#8b2114}
+    *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Poppins,Arial,sans-serif}
+    a{color:inherit}.top{background:rgba(251,247,238,.94);border-bottom:1px solid var(--line);padding:18px 5%;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+    .brand{font-weight:700;letter-spacing:.04em}.brand span{color:#a96312}.top small{display:block;color:var(--mid);font-weight:400;letter-spacing:0}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:10px;padding:11px 15px;font:500 .88rem Poppins;cursor:pointer;text-decoration:none;display:inline-block}.dark{background:var(--ink);color:white}.light{background:white;border:1px solid var(--line)}
+    main{width:min(1100px,92%);margin:38px auto 70px}h1,h2{font-family:Fraunces,Georgia,serif}h1{font-size:clamp(2rem,5vw,3rem);margin:0 0 8px}h2{font-size:1.55rem;margin:0 0 12px}.muted{color:var(--mid);line-height:1.65}
+    .notice{padding:14px 16px;border-radius:12px;background:#fff;border:1px solid var(--line);line-height:1.6;margin:20px 0}.notice.error{background:#ffe9e5;color:var(--red)}.notice.success{background:#e6f5e8;color:#205c2b}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:26px 0}.card{background:var(--soft);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 10px 28px rgba(28,25,22,.05)}.card p{line-height:1.6;color:var(--mid);font-size:.92rem}
+    .hidden{display:none!important}.message{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin:12px 0;overflow-wrap:anywhere}.message h3{margin:0 0 6px;font-size:1rem}.message p{white-space:pre-wrap;line-height:1.6}.meta{font-size:.8rem;color:var(--mid)}.empty{padding:22px;text-align:center;border:1px dashed var(--line);border-radius:12px;color:var(--mid)}
+    footer{text-align:center;color:var(--mid);font-size:.8rem;padding:20px}
+    @media(max-width:520px){.top{padding:15px 4%}main{width:92%;margin-top:25px}.card{padding:18px}.btn{padding:11px 12px}}
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span>GizmoGlow</span><small>Private administrator area</small></div>
+    <div class="actions">
+      <a class="btn light" href="./">View public portfolio</a>
+      <button class="btn dark hidden" id="logoutButton" type="button">Sign out</button>
+    </div>
+  </header>
+  <main>
+    <section id="loadingArea">
+      <h1>Checking your access…</h1>
+      <p class="muted">Please wait while we verify your signed-in account.</p>
+    </section>
+    <section id="accessArea" class="hidden">
+      <h1>Administrator dashboard</h1>
+      <p class="muted" id="welcomeText">Your account is being checked.</p>
+      <div id="status" class="notice" role="status" aria-live="polite"></div>
+      <div class="grid">
+        <article class="card"><h2>Portfolio</h2><p>Your public portfolio remains visible to everyone. Changes to the portfolio website itself are still made in the GitHub repository for now.</p><a class="btn light" href="./">Open portfolio ↗</a></article>
+        <article class="card"><h2>Contact inbox</h2><p>View messages saved in your Supabase database. The inbox will stay empty until a contact form is connected to it.</p><button class="btn dark" id="refreshButton" type="button">Refresh messages</button></article>
+      </div>
+      <section class="card">
+        <h2>Contact messages</h2>
+        <p class="muted">Only the administrator account can read these records.</p>
+        <div id="messages"><div class="empty">Loading messages…</div></div>
+      </section>
+    </section>
+    <section id="deniedArea" class="hidden">
+      <h1>Administrator access not enabled</h1>
+      <div id="deniedText" class="notice error">This signed-in account has not been approved as an administrator.</div>
+      <p class="muted">Sign in with the account you registered, then follow the one-time administrator setup instructions in the project README / setup SQL file. Do not share your password or any secret API key.</p>
+      <a class="btn dark" href="./auth.html">Go to sign in</a>
+    </section>
+  </main>
+  <footer>GizmoGlow · Private area · Keep your account credentials private.</footer>
+  <script type="module" src="./admin.js"></script>
+</body>
+</html>
